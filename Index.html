@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canales en Vivo</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: limegreen;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border: 2px solid limegreen;
+            background-color: black;
+            color: white;
+            outline: none;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: #222;
+            width: 250px;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.3);
+        }
+        .card img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: limegreen;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Canales</h1>
+    <input type="text" id="search" placeholder="Buscar canal..." onkeyup="filtrar()">
+
+    <div class="container" id="channelList">
+        <!-- Canales -->
+        <div class="card" data-name="Telefe">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Telefelogo2015.png" alt="Telefe">
+            <h3>Telefe</h3>
+            <button class="button" onclick="verOnline('https://pluto.tv/live-tv/613237a1c9e0db0007a91350 ')">Ver Online</button>
+        </div>
+
+        <div class="card" data-name="Eltrece">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Isotipo_eltrece_2016.png" alt="Eltrece">
+            <h3>Eltrece</h3>
+            <button class="button" onclick="verOnline('https://api.vodgc.net/player/v2/embed/playerId/PRZ9KU1515679151/contentId/1427089 ')">Ver Online</button>
+        </div>
+		
+		  <div class="card" data-name="Elnueve">
+            <img src="https://i.imgur.com/ynHet7e.png" alt="Elnueve">
+            <h3>Elnueve</h3>
+            <button class="button" onclick="verOnline('https://player.twitch.tv/?channel=elnueveok&parent=www.elnueve.com.ar ')">Ver Online</button>
+        </div>
+		
+		  <div class="card" data-name="AXN">
+            <img src="https://www.cablevisionhd.com/imge/axn.png" alt="AXN">
+            <h3>AXN</h3>
+            <button class="button" onclick="verOnline('https://clarovideo.sdfgnksbounce.com/axn.php?id=1019&lang=1 ')">Ver Online</button>
+        </div>
+	
+	      <div class="card" data-name="Ciudad magazine">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Ciudad_magazine_logo.png" alt="Ciudad magazine">
+            <h3>Ciudad magazine</h3>
+            <button class="button" onclick="verOnline('https://api.vodgc.net/player/v2/embed/playerId/5VB3581507572134/contentId/1074615 ')">Ver Online</button>
+        </div>
+    </div>
+
+    <script>
+        function verOnline(url) {
+            window.open(url, '_blank');
+        }
+
+        function filtrar() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                let name = card.getAttribute("data-name").toLowerCase();
+                if (name.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
